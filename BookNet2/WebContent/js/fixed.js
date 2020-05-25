@@ -32,8 +32,11 @@ $(document).ready(function(){
 		$('#writeModal').css('display', 'none');
 	});
 	
+	$('#hash-input').keypress
+	
 	$('#p-submit').click(function(){ //글등록 버튼 눌렀을 떄 처리해주는 함수::ajax 처리 
-		
+		//이미 도서번호는 input name=bno 에 담겨져 있다.
+		$('#bno')
 	});
 	
 	//글작성 도서검색 ajax 처리 구문
@@ -78,7 +81,6 @@ $(document).ready(function(){
 		});
 	});
 	
-	
 	$('#sel-b-submit').click(function(){ 
 		var selno = $('.rstbook').attr('id'); //도서번호 
 		var selimg = $('#b-image').attr('src'); //도서 이미지
@@ -91,4 +93,5 @@ $(document).ready(function(){
 		$('#sel-wrt-b-img').attr('src', selimg);
 		$('#sel-wrt-b-ttl').html('<b>' + selttl + '</b>');
 	});
+	
 });

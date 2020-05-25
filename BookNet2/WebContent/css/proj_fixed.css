@@ -366,8 +366,8 @@ a:visited {
 	float: left;
     width: 425px;
     height: 150px;
-    /* line-height: 115px; */
-    padding-top: 45px;
+    line-height: 1;
+    resize: none;
 }
 
 .wrt-last {
