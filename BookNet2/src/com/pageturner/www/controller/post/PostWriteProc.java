@@ -1,5 +1,11 @@
 package com.pageturner.www.controller.post;
-
+/**
+ * 이 클래스는 게시글 제출 버튼 이벤트 후 진행되는 디비작업 요청에 대한 컨트롤러입니다.
+ * @author leeseulkim
+ * @since 25th May 2020
+ * 
+ */
+import java.util.*;
 import javax.servlet.http.*;
 import javax.swing.JOptionPane;
 
@@ -31,6 +37,9 @@ public class PostWriteProc implements PageController {
 		String sbno = req.getParameter("bno");
 		String body = req.getParameter("body");
 		String seno = req.getParameter("eno");
+		String stags = req.getParameter("tags");
+		System.out.println(stags);
+		
 		int bno = 0;
 		int eno = 0;
 		
@@ -45,14 +54,44 @@ public class PostWriteProc implements PageController {
 		PostsDAO dao = new PostsDAO();
 		
 		int cnt = dao.addPost(id, bno, body, eno);
+		System.out.println(cnt);
 		
 		if(cnt != 1) {
 			//게시글을 업로드 하지 못함  
 			//창을 띄워 알려주기 
 			JOptionPane.showMessageDialog(null, "게시글 업로드에 실패하였습니다.");
 		}
-				
+		
+		if(stags.length() != 0) {
+			//문자열 잘라주는 함수호출 
+			ArrayList<String> list = splitStr(stags);
+			
+			int len = list.size();
+			System.out.println(len);
+			int rst;
+			for(int i = 0; i < len; i++) {
+				rst = 0;
+				rst = dao.addHashTags(list.get(i));
+				//해시태그 테이블에 해시태그 insert 
+				System.out.println(rst);
+			}
+			System.out.println("완료?");
+		}
+			
 		return view;
+	}
+	
+	//문자열 잘라주는 함수
+	public ArrayList<String> splitStr(String stags){
+		ArrayList<String> list = new ArrayList<String>();
+		
+		StringTokenizer str = new StringTokenizer(stags, " ");
+		
+		while(str.hasMoreElements()) {
+			list.add(str.nextToken());
+		}
+		
+		return list;
 	}
 
 }

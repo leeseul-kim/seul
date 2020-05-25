@@ -52,16 +52,16 @@ display: none; /*Chrome, Safari, Opera*/
 <script>
 $(function(){
    $('#lbtn').click(function(){
-      $(location).attr('href','/clsProj/member/login.cls');
+      $(location).attr('href','/BookNet/member/login.cls');
    })
    $('#lbtn2').click(function(){
-      $(location).attr('href','/clsProj/member/login.cls');
+      $(location).attr('href','/BookNet/member/login.cls');
    })
    $('#jbtn').click(function(){
-      $(location).attr('href','/clsProj/member/join.cls');
+      $(location).attr('href','/BookNet/member/join.cls');
    })
    $('#jbtn2').click(function(){
-      $(location).attr('href','/clsProj/member/join.cls');
+      $(location).attr('href','/BookNet/member/join.cls');
    })
    $('.dCJp8').click(function(){
       $('.closeing').remove();
@@ -167,7 +167,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
             <div class="logobox">
                		<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
                	 <div style="box-sizing: border-box; font-size: 30px; text-align: center;">
-              	 	<a href="/BookNet/main/mem_main.cls" id="logolink">PageTurner</a>
+              	 	<a href="/BookNet/main/non.cls" id="logolink">PageTurner</a>
               	 </div>
        		</div>
             <div class="searchbox">

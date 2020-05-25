@@ -9,7 +9,7 @@ public class LoginForm implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/member/loginForm.jsp";
+		String view = "/member/login.jsp";
 		
 		return view;
 	}

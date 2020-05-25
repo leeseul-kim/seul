@@ -1,3 +1,10 @@
+/*
+ * 이 스크립트는 jquery 진행을 위한 스크립트 파일입니다.
+ * 웹 내 이벤트 처리를 담당하며 ajax 처리 또한 존재합니다.
+ * @author leeseul kim
+ * @since 25th May 2020
+ * 
+ */
 $(document).ready(function(){
 	$(document).scroll(function() {
 		var maxHeight = $(document).height();
@@ -32,13 +39,6 @@ $(document).ready(function(){
 		$('#writeModal').css('display', 'none');
 	});
 	
-	$('#hash-input').keypress
-	
-	$('#p-submit').click(function(){ //글등록 버튼 눌렀을 떄 처리해주는 함수::ajax 처리 
-		//이미 도서번호는 input name=bno 에 담겨져 있다.
-		$('#bno')
-	});
-	
 	//글작성 도서검색 ajax 처리 구문
 	$('#book-search').click(function(){ //글쓰기 모달에서 읽은 도서 검색 클릭시 처리해주는 함수 
 		$('#-s-b-modal').css('display', 'block');
@@ -51,7 +51,6 @@ $(document).ready(function(){
 			url : '/BookNet/ajax/searchBook.cls',
 			type : 'POST',
 			dataType : 'json',
-			async : false,
 			data : {
 				'searchWord' : book
 			},
@@ -93,5 +92,37 @@ $(document).ready(function(){
 		$('#sel-wrt-b-img').attr('src', selimg);
 		$('#sel-wrt-b-ttl').html('<b>' + selttl + '</b>');
 	});
+	
+	$(document).on('click', '#p-submit', function(){
+		//이미 도서번호는 input name=bno 에 담겨져 있다.
+		//select로 선택된 감정을 변수에 대입하기 
+		var emo = $('#selEmo').val();
+		var body = $('#postBody').val();
+		var htag = $('#hash-input').val();
+		alert(htag);
+		$('#eno').val(emo);
+		$('#body').val(body);
+		$('#tags').val(htag);
+//		alert(len);
+		
+		if(!emo){
+			$('#selEmo').focus();
+			return
+		}
+		if(!body){
+			$('#postBody').focus();
+			return
+		}
+		
+		//데이터 넘기기
+		$('#frm').attr('action','/BookNet/post/postWriteProc.cls');
+		$('#frm').submit();
+	});
+	
+//	$(document).on('keyup', '#hash-input', function(){ //해시태그 작성시
+//		if(keyCode == 32){
+//			//스페이스바 입력시 #으로 대체해준다.
+//		}
+//	});
 	
 });

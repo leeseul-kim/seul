@@ -1,38 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
-<link rel="stylesheet" href="/BookNet/css/w3.css">
-<link rel="stylesheet" href="/BookNet/css/user.css">
+<title>Test </title>
+<link rel="stylesheet" href="/BookNet/css/w3.css" />
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <style>
+	.lbl1 {
+		min-width: 80px;
+	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#lbtn').click(function(){
-			//데이터 읽기 
-			var sid = $('#id').val(); //입력된 아이디 값을 변수 sid에 저장 
-			var spw = $('#pw').val(); 
-			//유효성 검사하기(값이 들어왔는지 확인)
+			// 할일
+			// 1. 데이터 읽고
+			var sid = $('#id').val();
+			var spw = $('#pw').val();
+			// 2. 유효성 검사하고
 			if(!sid){
-				$('#id').focus(); //아이디에 값이 들어오지 않았다면 id 입력하는 input 태그에 focus 해주라는 뜻. 
+				$('#id').focus();
 				return;
 			}
 			if(!spw){
 				$('#pw').focus();
 				return;
 			}
-			
+
 			$('#frm').attr('method', 'POST');
-			$('#frm').attr('action', '/BookNet/member/loginProc.cls'); //로그인버튼을 눌렀을 때 이동할 컨트롤러 
-			$('#frm').submit(); //form 태그의 값들을 파라미터로 하여 loginProc 으로 이동한다.
-			
-			//alert('로그인에 실패하였습니다. 아이디 혹은 비밀번호를 확인해주세요.');
+			$('#frm').attr('action', '/BookNet/member/loginProc.cls');
+			$('#frm').submit();
 		});
-	});	
+
+		<%
+			String sid = (String)session.getAttribute("SID");
+		%>
+	
+		// 로그인 여부에 따른 처리
+		var sid = '<%= sid %>';
+		/* alert(typeof sid); */
+		if(sid != 'null' && sid.length != 0 ){
+			$('#loginWin').css('display', 'none');
+			$('#msg').html(sid);
+			$('#msgWin').css('display', '');
+		}
+		
+		<%
+	      // 세션 초기화
+	      session.invalidate();
+	   %>
+	   
+	   $('#hbtn').click(function(){
+		  $(location).attr('href', '/BookNet/main/main.cls') 
+	   });
+	});
 </script>
 </head>
 <body>
@@ -53,6 +75,10 @@
 			<div class="w3-half w3-red w3-button" id="hbtn">Home</div>
 			<div class="w3-half w3-blue w3-button" id="lbtn">Login</div>
 		</div>
+	</div>
+	<div class="w3-third" id="msgWin" style="display: none;">
+		<h2 class="w3-col m4 w3-margin-top" style="padding-top: 80px; height: 250px; text-align: right" id="msg"></h2>
+		<h2 class="w3-col m8 w3-margin-top" style="padding-top: 80px; height: 250px;"> 님이 로그인 했습니다.</h2>
 	</div>
 </body>
 </html>
