@@ -8,15 +8,15 @@
 
 
 <title>로그인페이지</title>
-<link rel="stylesheet" type="text/css" href="../css/w_20200211.css">
+<link rel="stylesheet" type="text/css" href="/BookNet/css/w_20200211.css">
 </head>
-<body>
-	<div>
+<body style="height: 100%; background-position: inherit; background-image: url('/BookNet/img/login_image.jpeg')">
+	<div class="totaldiv">
 
 		<!-- header -->
 		<div id="header">
 			<h1>
-				<a href="http://www.naver.com/" class="sp h_logo"></a>
+				<a href="/BookNet/main/non.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 			</h1>
 		</div>
 		<!-- //header -->
@@ -52,10 +52,11 @@
 
 				<!-- 아이디, 비번, 회원가입-->
 				<div class="find_info">
-					<a target="_blank" id="idinquiry">아이디 찾기</a> <span class="bar"
-						aria-hidden="true">|</span> <a target="_blank" id="pwinquiry">비밀번호
-						찾기</a> <span class="bar" aria-hidden="true">|</span> <a
-						target="_blank" id="join">회원가입</a>
+					<a target="_blank" id="idinquiry">아이디 찾기</a> 
+					<span class="bar" aria-hidden="true">|</span> 
+					<a target="_blank" id="pwinquiry">비밀번호 찾기</a> 
+					<span class="bar" aria-hidden="true">|</span> 
+					<a target="_blank" id="join" href="/BookNet/">회원가입</a>
 				</div>
 			</div>
 			<!-- //content -->

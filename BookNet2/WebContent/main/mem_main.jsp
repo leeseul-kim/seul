@@ -157,7 +157,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				<div class="logobox">
 					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
+						<a href="/BookNet/main/main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">
